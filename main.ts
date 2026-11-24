@@ -1,17 +1,17 @@
-// Seventeen Syllables of Debugging — one haiku about debugging, 5-7-5.
-// The grader runs `node main.ts` and reads /output/entry.txt.
+// One debugging haiku, 5-7-5. The grader runs `node main.ts`
+// and reads the text back from /output/entry.txt.
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const haiku = [
-  "Three a.m. cursor",
-  "blinks at a breakpoint I set",
-  "the bug wore my name",
+  "segmentation fault",
+  "no line number, no sorry",
+  "just the prompt again",
 ].join("\n");
 
 const outDir = process.env.OUTPUT_DIR ?? "/output";
-// The gate only accepts 1-200 characters of UTF-8 text, so refuse
-// to write anything outside that range instead of submitting junk.
+// The gate only takes 1-200 characters of UTF-8 text, so bail out
+// rather than writing anything outside that range.
 if (haiku.length < 1 || haiku.length > 200) {
   throw new Error(`haiku must be 1-200 chars, got ${haiku.length}`);
 }
